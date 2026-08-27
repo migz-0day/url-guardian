@@ -1,5 +1,5 @@
 ## URL GUARDIAN
-A security focused url analysis tool for help helping users identify potentially suspicious or malicious URLs.
+A security focused url analysis tool for helping users identify potentially suspicious or malicious URLs.
 
 # Features 
 - URL validation
