@@ -144,4 +144,4 @@ for(let i = 0;i<5;i++){
 
 setInterval(createRow,800)
 }
-window.addEventListener("DOMContentLoaded",generateBinary);
+window.addEventListener("DOMContentLoaded",generateBinary());
