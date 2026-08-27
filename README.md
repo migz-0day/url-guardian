@@ -32,7 +32,7 @@ A security focused url analysis tool for help helping users identify potentially
 python app.py
 
 ## NOTE
-Confidence is URL GUardian telling you how confident it is with the result. 
+Confidence is URL Guardian telling you how confident it is with the result. 
 
 #
 
