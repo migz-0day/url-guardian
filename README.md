@@ -1,21 +1,25 @@
 ## URL GUARDIAN
+
 A security focused url analysis tool for help helping users identify potentially suspicious or malicious URLs.
 
-# Features 
+# Features
+
 - URL validation
 - URL analysis
 - detection of suspicious URL patterns
 - clear results for users
 
 ## Others
+
 - Detects malformation of popular names like: google not g00gle
 - Detects words like: bank,login,gift,winner...
 - Detects letters like: l misplaced with 1 or o and 0
-- along URLs 
+- along URLs
 - can detect punycode
-- has a database to check previously scanned URLs 
+- has a database to check previously scanned URLs
 
 # Technologies
+
 - Python
 - java script
 - HTML
@@ -23,16 +27,19 @@ A security focused url analysis tool for help helping users identify potentially
 - SQLite
 
 # How it works
-1. User enters a URL  
-2. URL Guardian analyzes the URL 
+
+1. User enters a URL
+2. URL Guardian analyzes the URL
 3. The application performs security checks
 4. The result is presented to the user
 
-# To run 
+# To run
+
 python app.py
 
 ## NOTE
-Confidence is URL Guardian telling you how confident it is with the result. 
+
+Confidence is URL Guardian telling you how confident it is with the result.
 
 #
 
@@ -44,4 +51,5 @@ Confidence is URL Guardian telling you how confident it is with the result.
 <img width="1920" height="879" alt="Document — Mozilla Firefox 8_27_2026 11_04_13 PM" src="https://github.com/user-attachments/assets/1ba56ea7-c036-427d-a4f1-c9bc4d260889" />
 
 ## sec note
-its intended for educational purposes. 
+
+its intended for educational purposes.

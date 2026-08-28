@@ -139,7 +139,7 @@ def scan():
             if keyword in url.lower():
              score+=25
              Warning+=1
-             reasons.append(f"conatains{keyword}") 
+             reasons.append(f"contains{keyword}") 
     
     similars={
         "0":"o",
