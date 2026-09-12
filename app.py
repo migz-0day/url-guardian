@@ -127,7 +127,7 @@ def scan():
       reasons.append("many numbers")     
            
     keywords=[
-            "login","claim",
+            "login","claim","details"
             "verify","password",
             "bank","confirm",
             "secure","signin",
@@ -163,11 +163,16 @@ def scan():
      reasons.append("might have an interchanged character")
     
     brands=[
-       "meta",
-       "google",
-       "facebook",
-       "gmail",
-       "microsoft"
+       "meta","amazon","google","gmail","facebook","microsoft","netflix","spotify","amazon","apple",
+       "samsung","disney","ebay","zoom",
+       "instagram","discord","whatsapp","tiktok","reddit","telegram",
+       "aws","azure","cloudflare",
+       "openAI","anthropic","nvidia",
+       "gmail","github","gitlab",
+       "stripe","cisco","linkedIn","y-combinator",
+       "linux","ubuntu","windows","oracle","ibm",
+       "visa","paypal","mastercard","binance",
+       "steam","xbox"
     ]                    
     for brand in brands:
      if brand in normalized_url and brand not in original_url:

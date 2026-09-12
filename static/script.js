@@ -5,6 +5,14 @@ scanbtn.addEventListener("click",function(){
 const searchbar=document.getElementById("searchbar").value;
 getpy(searchbar);
 
+scanbtn.textContent="scanning...";
+scanbtn.disabled=true;
+setTimeout(()=>{
+    scanbtn.textContent="scan"
+    scanbtn.disabled=false;
+},2500)
+
+
 const progresscont=document.getElementById("progresscont");
 const progressbar=document.getElementById("progressbar");
 /*
@@ -21,12 +29,11 @@ progressbar.style.width="0%"
     }
  },250);*/
 
-
 async function getpy(searchval){  
-    /*
+  /*   
     setTimeout(()=>{
-        getpy(searchval);
-    },5000);*/
+        getpy(searchbar);
+    },5100);*/
 
   try{
     const searchpy=await fetch ("/scan",{
@@ -46,8 +53,10 @@ async function getpy(searchval){
      progressbar.style.width="100%";
          setTimeout(() => {
             progresscont.style.display="none";
-         },100);
-  */
+    },1000);*/
+   
+
+  setTimeout(()=>{
     console.log(relpy);
     resbox.innerHTML=
     `<div>
@@ -70,12 +79,14 @@ async function getpy(searchval){
     }else{
         resbox.classList.add("safe");
     }
+},2500)
 }
 catch(error){
     console.error(error);
  }
 }
 });
+
 
 
 const histpage=document.getElementById("histpage");
