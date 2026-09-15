@@ -110,8 +110,6 @@ def scan():
       reasons.append("uses nationalized(punycode)domain")
       print(host)
 
-    
-    
     if host is not None and host.count("-") >3:
        score +=10
        reasons.append("has to many hyphens")
@@ -127,7 +125,7 @@ def scan():
       reasons.append("many numbers")     
            
     keywords=[
-            "login","claim","details"
+            "login","claim","details",
             "verify","password",
             "bank","confirm",
             "secure","signin",
@@ -206,7 +204,6 @@ def scan():
        confidence=90
     else:
        confidence=98
-
 
     current_time=datetime.now().strftime("%Y-%m-%D %H:%M:%S")
     conn=sqlite3.connect("hist.db")
