@@ -3,7 +3,9 @@ const resbox=document.getElementById("responsebox");
 const scanbtn=document.getElementById("scanbtn");
 scanbtn.addEventListener("click",function(){  
 const searchbar=document.getElementById("searchbar").value;
+setTimeout(()=>{
 getpy(searchbar);
+},2500)
 
 scanbtn.textContent="scanning...";
 scanbtn.disabled=true;
@@ -56,7 +58,7 @@ async function getpy(searchval){
     },1000);*/
    
 
-  setTimeout(()=>{
+  
     console.log(relpy);
     resbox.innerHTML=
     `<div>
@@ -79,7 +81,7 @@ async function getpy(searchval){
     }else{
         resbox.classList.add("safe");
     }
-},2500)
+
 }
 catch(error){
     console.error(error);

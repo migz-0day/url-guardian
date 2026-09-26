@@ -1,7 +1,9 @@
 import ipaddress
 from urllib.parse import urlparse
 import sqlite3
+import whois
 from datetime import datetime
+import requests
 
 def create_database():
  conn = sqlite3.connect("hist.db")
@@ -69,7 +71,43 @@ def scan():
      score+=10
      Warning+=1
      reasons.append("uses unrecognized port")
-     
+
+    try:
+      w=whois.whois(host)
+      creation=w.creation_date
+
+      if isinstance(creation,list):
+        creation=creation[0]
+
+      if creation:
+        age=datetime.now(creation.tzinfo)-creation
+        age_days=age.days
+        print("domain age:", age_days,"days")
+      if age_days < 30:
+          score+=15
+          Warning+=1
+          reasons.append("domain was registerd recently")
+    except Exception as e:
+      print("whois lookup failed",e)
+
+    try:
+      response=requests.get(
+        url,
+        allow_redirects=True,
+        timeout=10
+        )
+      redirect_count=len(response.history)
+      if redirect_count >0 :
+        score+=min(redirect_count*5,20)
+        Warning+=1
+        reasons.append(f"URL redirects {redirect_count} time(s).")
+      if redirect_count >3:
+        reasons.append("URL has a long redirect chain.")
+        print("redirects:",redirect_count)
+        print("final URL :",response.url)
+    except requests.RequestException as e:
+      print("Redirect check failed: ",e)
+    
     """"
     if not host:
      return jsonify({
@@ -239,8 +277,16 @@ def history():
    history=cursor.fetchall()
    conn.close()
    return jsonify(history)
-   
-
+"""
+test=whois.whois("google.com")
+creation= test.creation_date   
+print("creation date:",creation)
+if isinstance(creation,list):
+  creation=creation[0]
+  age= datetime.now(creation.tzinfo) - creation
+print("domain age:", age.days,"days")
+"""
 if __name__=="__main__":
     create_database()
     app.run(debug=True)
+
