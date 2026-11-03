@@ -28,18 +28,15 @@ A security focused url analysis tool that helps in identifying potentially suspi
 
 ## Project structure
 ```
-URL-Gurdian/
-|
-|---app.py
-|--hist.db
-|--requirements.txt
-|
-|--templates/
-|   --home.html
-|
-|--static/
-    |--script.js
-    ---style.css
+URL-Guardian/
+├── app.py
+├── hist.db
+├── requirements.txt
+├── templates/
+│   └── home.html
+└── static/
+    ├── script.js
+    └── style.css
 ```
 
 ## How it works
