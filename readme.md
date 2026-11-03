@@ -1,43 +1,79 @@
 ## URL GUARDIAN
-A security focused url analysis tool for helping users identify potentially suspicious or malicious URLs.
+A security focused url analysis tool that helps in identifying potentially suspicious or malicious URLs.
 
-# Features
+## Features
+# URL Analysis
+- URL protocal normalization
+- URL shortener detection
+- Ip address detection
+- suspecious key words
+- Punycode detection
+- subdomain stucture checks
+- Non standard port detection
+- Excessive slash detecion
+- Excessive hyphen detection
 
-- URL validation
-- URL analysis
-- detection of suspicious URL patterns
-- clear results for users
+# Advanced
+- domain age analysis using WHOIS.
+- HTTP redirection detection
+- URL decoding and encoded-character inspection.
 
-## Others
+## Technologies
 
-- Detects malformation of popular names like: google not g00gle
-- Detects words like: bank,login,gift,winner...
-- Detects letters like: l misplaced with 1 or o and 0
-- along URLs
-- can detect punycode
-- has a database to check previously scanned URLs
-
-# Technologies
-
-- Python
-- java script
+- Python (flask,requests,python-whois)
+- javaScript
 - HTML
 - CSS
 - SQLite
 
-# How it works
+## Project structure
+```
+URL-Gurdian/
+|
+|---app.py
+|--hist.db
+|--requirements.txt
+|
+|--templates/
+|   --home.html
+|
+|--static/
+    |--script.js
+    ---style.css
+```
 
+## How it works
 1. User enters a URL
-2. URL Guardian analyzes the URL
-3. The application performs security checks
-4. The result is presented to the user
+2. URL Guardian noemalizes and parses the URL.
+3. inspecion is done on different URL characteristics.
+4. Whois and http checks gather more info
+5. The result is presented to the user inluding reasons.
+6. scan history is stored in SQlite(hist.db)
 
-# To run
+## Installation
+  # requirements
+ * Python 3.13 or any compatible version.
+ * pip or uv
 
+# Set up
+ clone the repo
+ ```bash
+ git clone https://github.com/migz-0day/url-guardian.git
+ cd url-gurdian
+ ```
+ create an enviroment
+ ```bash
+ python -m venv .venv
+```
+install dependacies
+```bash
+pip install -r requirements.txt
+```
+To run
+```bash
 python app.py
-
-## NOTE
-
+```
+## NOTE  
 Confidence is URL Guardian telling you how confident it is with the result.
 
 #
@@ -49,6 +85,8 @@ Confidence is URL Guardian telling you how confident it is with the result.
 <img width="1920" height="879" alt="Document — Mozilla Firefox 8_27_2026 11_03_08 PM" src="https://github.com/user-attachments/assets/38b618cc-94d9-4334-9744-fc60594c97e8" />
 <img width="1920" height="879" alt="Document — Mozilla Firefox 8_27_2026 11_04_13 PM" src="https://github.com/user-attachments/assets/1ba56ea7-c036-427d-a4f1-c9bc4d260889" />
 
-## sec note
+# working on
 
-its intended for educational purposes.
+
+## sec note
+It's risk score is not a garantee that the url is safe or malicious.
