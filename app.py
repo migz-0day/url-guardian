@@ -1,5 +1,5 @@
 import ipaddress
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 import sqlite3
 import whois
 from datetime import datetime
@@ -150,9 +150,22 @@ def scan():
 
     if host is not None and host.count("-") >3:
        score +=10
-       reasons.append("has to many hyphens")
+       reasons.append("has to many hyphens") 
+     
     
-       
+    decoded_url=unquote(url)
+    if decoded_url != url:
+      print("original URL :",url)
+      print("decode_url :",decoded_url)
+
+      if decoded_url.count("/") > url.count("/"): 
+        score+=5
+        warning+=1
+        reasons.append("Encoded url contains hidden slash characters.")
+
+      if decoded_url != url:
+        reasons.append("Encoded Url contains hidden slash characters.")
+    
     count=0
     for letter in url:
        if letter.isdigit():
@@ -277,15 +290,7 @@ def history():
    history=cursor.fetchall()
    conn.close()
    return jsonify(history)
-"""
-test=whois.whois("google.com")
-creation= test.creation_date   
-print("creation date:",creation)
-if isinstance(creation,list):
-  creation=creation[0]
-  age= datetime.now(creation.tzinfo) - creation
-print("domain age:", age.days,"days")
-"""
+
 if __name__=="__main__":
     create_database()
     app.run(debug=True)
